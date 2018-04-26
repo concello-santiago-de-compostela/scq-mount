@@ -1,0 +1,6 @@
+Package: scq-mount
+Version: 1.0
+Maintainer: Rafael Rodriguez <rrodriguezg@santiagodecompostela.gal>
+Depends: libpam-mount, cifs-utils
+Architecture: all
+Description: Configura el servicio PAM para montaje automático de unidades remotas durante el inicio de sesión.

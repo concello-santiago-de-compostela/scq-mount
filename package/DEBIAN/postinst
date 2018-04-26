@@ -1,0 +1,5 @@
+# Elimina las lineas de comentarios para activar el fichero de configuracion a nivel de usuario
+sed -ni '/luserconf/{x;n;d;};1h;1!{x;p;};${x;p;}' /etc/security/pam_mount.conf.xml
+
+# Añade el montaje de NETLOGON para acceder a los ficheros de usuario
+sed -i '/Volume definitions/a \\n<volume fstype="cifs" server="concello.santiagodecompostela.org" path="NETLOGON" mountpoint="/tmp/netlogon" options="user=%(DOMAIN_USER),vers=1.0" />' /etc/security/pam_mount.conf.xml
