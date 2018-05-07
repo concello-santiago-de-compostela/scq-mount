@@ -5,4 +5,4 @@ sed -ni '/luserconf/{x;n;d;};1h;1!{x;p;};${x;p;}' /etc/security/pam_mount.conf.x
 sed -i '/Volume definitions/a \\n<volume fstype="cifs" server="concello.santiagodecompostela.org" path="NETLOGON" mountpoint="/tmp/netlogon" options="user=%(DOMAIN_USER),domain=%(DOMAIN_NAME),actimeo=3,vers=1.0" />' /etc/security/pam_mount.conf.xml
 
 # Añade opciones globales para el montaje de usuario
-sed -i '0,/.*mntoptions.*/s//\<mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other,vers,actimeo,domain" \/\>/' /etc/security/pam_mount.conf.xml
+sed -i '0,/^<mntoptions.*/s//\<mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other,vers,actimeo,domain" \/\>/' /etc/security/pam_mount.conf.xml
