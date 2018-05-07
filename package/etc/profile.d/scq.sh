@@ -45,8 +45,8 @@ function add_2_xml {
 
 	SERVER=$(echo $1 | cut -d: -f1)
 	RUTA=$(echo $1 | cut -d: -f2)
-	echo "<volume fstype=\"cifs\" server=\"$SERVER\" path=\"$RUTA\" mountpoint=\"~/$RUTA\" options=\"nodev,nosuid\" />" >> $HOME/.pam_mount.conf.xml
-	
+	echo "<volume fstype=\"cifs\" server=\"$SERVER\" path=\"$RUTA\" mountpoint=\"~/$RUTA\" options=\"nodev,nosuid,domain=%(DOMAIN_NAME),actimeo=3,vers=2.1\" />" >> $HOME/.pam_mount.conf.xml
+
 }
 
 [[ -f $HOME/.pam_mount.conf.xml ]] && cp $HOME/.pam_mount.conf.xml $HOME/.pam_mount.conf.xml.bak
