@@ -1,5 +1,15 @@
 #!/bin/bash
 
+##################################################################
+# Autor: Rafael Rodriguez <rrodriguezg@santiagodecompostela.gal> #
+# Licencia: Apache 2.0						 #
+# Descripción: Construcción del fichero ~/.pam_mount.conf.xml    #
+#	para que se monten las unidades remotas del usuario	 #
+##################################################################
+
+##################################################################
+# 			FUCIONES				 #
+##################################################################
 
 function translate_file {
 
@@ -49,13 +59,17 @@ function add_2_xml {
 
 }
 
-[[ -f $HOME/.pam_mount.conf.xml ]] && cp $HOME/.pam_mount.conf.xml $HOME/.pam_mount.conf.xml.bak
+# Configuración global #
 
 USUARIO=${USER##*\\}
 
 exec 3> >(logger -t mountSCQ)
 
-# Comienza la construcción del fichero XML de Usuario
+# Guarda una copia de la versión anterior del fichero, si existe #
+
+[[ -f $HOME/.pam_mount.conf.xml ]] && cp $HOME/.pam_mount.conf.xml $HOME/.pam_mount.conf.xml.bak
+
+# Comienza la construcción del fichero XML de usuario #
 
 echo -e "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" > $HOME/.pam_mount.conf.xml
 echo -e "<pam_mount>\n" >> $HOME/.pam_mount.conf.xml
@@ -65,6 +79,8 @@ echo -e "<pam_mount>\n" >> $HOME/.pam_mount.conf.xml
 	[[ -f /tmp/netlogon/$USUARIO.bat ]] && user_process || echo "File $USUARIO.bat not found in NETLOGON" >&3
 
 echo -e "\n</pam_mount>" >> $HOME/.pam_mount.conf.xml
+
+# Se avisa al usuario de los posibles cambios entre la versión anterior y la actual #
 
 diff $HOME/.pam_mount.conf.xml $HOME/.pam_mount.conf.xml.bak 2>/dev/null 1>&2
 
