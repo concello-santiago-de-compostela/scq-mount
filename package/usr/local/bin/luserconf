@@ -59,6 +59,10 @@ function add_2_xml {
 
 }
 
+# Comprobacion inicial del montaje de NETLOGON #
+
+mountpoint -q /tmp/netlogon || exit 1
+
 # Configuración global #
 
 USUARIO=${USER##*\\}
@@ -84,5 +88,5 @@ echo -e "\n</pam_mount>" >> $HOME/.pam_mount.conf.xml
 
 diff $HOME/.pam_mount.conf.xml $HOME/.pam_mount.conf.xml.bak 2>/dev/null 1>&2
 
-[[ $? -ne 0 ]] && notify-send "Unidades de rede" "Inicie unha nova sesión para aplicar os cambios."
+[[ $? -ne 0 ]] && notify-send "Sistema" "Inicie unha nova sesión para aplicar os cambios nas unidades de rede."
 

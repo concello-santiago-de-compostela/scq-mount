@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/luserconf
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[es_ES]=Remote mount
+Name=Remote mount

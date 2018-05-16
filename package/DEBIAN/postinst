@@ -14,4 +14,3 @@ sed -i '/pam_mount.so/d' /etc/pam.d/common-auth /etc/pam.d/common-session
 sed -i '/include common-auth/a auth\toptional\tpam_mount.so' /etc/pam.d/lightdm
 sed -i '/include common-session/a session\toptional\tpam_mount.so' /etc/pam.d/lightdm
 sed -i '/include common-session/a session\toptional\tpam_mount.so' /etc/pam.d/lightdm-greeter
-
