@@ -1,5 +1,5 @@
 Package: scq-mount
-Version: 1.3
+Version: 1.4
 Maintainer: Rafael Rodriguez <rrodriguezg@santiagodecompostela.gal>
 Depends: libpam-mount, cifs-utils
 Architecture: all
